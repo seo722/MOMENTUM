@@ -1,17 +1,22 @@
-const h1 = document.querySelector("div.hello:first-child h1");
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+const HIDDEN_CLASSNAME = "hidden";
 
-function handleTitleClick() {
-  h1.classList.toggle("clicked");
+function onLoginSubmit(event) {
+  event.preventDefault();
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  const username = loginInput.value;
+  //greeting.innerText = "Hello " + username;
+  greeting.innerText = `Hello ${username}`;
+  //string 안에 변수를 넣고 싶을 때
+  //`string ${변수}`
+
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-h1.addEventListener("click", handleTitleClick);
+loginForm.addEventListener("submit", onLoginSubmit);
 
-//toggle ===
-//const clickedClass = "clicked";
-//if (h1.classList.contains(clickedClass)) {
-//  h1.classList.remove(clickedClass);
-//} else {
-//  h1.classList.add(clickedClass);
-//}
-//toggle === classList에 내가 원하는 class가 있는지를 확인해서
-//없으면 넣고 있으면 제거.
+//default behavior 기본 동작
+//submit의 기본 동작 : 새로고침
+//a(링크)의 기본 동작 : 링크로 페이지 옮기기
