@@ -1,40 +1,30 @@
-const clockTitle = document.querySelector("#x-clock");
+const colors = [
+  "#ef5777",
+  "#575fcf",
+  "#4bcffa",
+  "#34e7e4",
+  "#0be881",
+  "#f53b57",
+  "#3c40c6",
+  "#0fbcf9",
+  "#00d8d6",
+  "#05c46b",
+  "#ffc048",
+  "#ffdd59",
+  "#ff5e57",
+  "#d2dae2",
+  "#485460",
+  "#ffa801",
+  "#ffd32a",
+  "#ff3f34",
+];
+const button = document.querySelector("button");
 
-function getTime() {
-  const xmasDay = new Date(`${new Date().getFullYear()}-12-25:00:00:00+0900`);
-  const now = new Date();
-  const difference = new Date(xmasDay - now);
-
-  const secondsInMs = Math.floor(difference / 1000);
-  const minutesInMs = Math.floor(secondsInMs / 60);
-  const hoursInMs = Math.floor(minutesInMs / 60);
-  const days = Math.floor(hoursInMs / 24);
-
-  const seconds = secondsInMs % 60;
-  const minutes = minutesInMs % 60;
-  const hours = hoursInMs % 24;
-
-  const daysStr = `${days < 10 ? `0${days}` : days}d`;
-  const hoursStr = `${hours < 10 ? `0${hours}` : hours}h`;
-  const minutesStr = `${minutes < 10 ? `0${minutes}` : minutes}m`;
-  const secondsStr = `${seconds < 10 ? `0${seconds}` : seconds}s`;
-
-  clockTitle.innerHTML = `${daysStr} ${hoursStr} ${minutesStr} ${secondsStr}`;
+function clicker() {
+  const randomColor1 = colors[Math.floor(Math.random() * colors.length)];
+  const randomColor2 = colors[Math.floor(Math.random() * colors.length)];
+  const bg = document.querySelector("body");
+  bg.style.background = `linear-gradient(to right, ${randomColor1}, ${randomColor2})`;
 }
-getTime();
-setInterval(getTime, 1000);
-//내가 한거 ㅋ
-//const xClock = document.querySelector("#x-clock");
 
-//function getClock() {
-//const xMas = new Date("December 25, 2021 00:00:00");
-//const now = new Date();
-//const days = xMas.getDay() - now.getDay() - 1;
-//const hours = 23 - now.getHours();
-// const minutes = 59 - now.getMinutes();
-//const seconds = 59 - now.getSeconds();
-// xClock.innerText = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
-//}
-
-//getClock();
-//setInterval(getClock, 1000);
+button.addEventListener("click", clicker);
